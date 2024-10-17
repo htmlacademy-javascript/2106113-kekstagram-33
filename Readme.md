@@ -1,7 +1,7 @@
 # Личный проект «Кекстаграм»
 
 * Студент: [Sergey Veldyatskikh](https://up.htmlacademy.ru/javascript/33/user/2106113).
-* Наставник: `Неизвестно`.
+* Наставник: [Павел Ившин](https://htmlacademy.ru/profile/id818775).
 
 ---
 
