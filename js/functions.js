@@ -51,3 +51,29 @@ getNumber('а я томат'); // NaN
 getNumber(2023); // 2023
 getNumber(-1); // 1
 getNumber(1.5); // 15
+
+/* Функция, которая принимает время начала и конца рабочего дня, а также время старта и продолжительность встречи в минутах
+и возвращает true, если встреча не выходит за рамки рабочего дня, и false, если выходит */
+
+const getTime = (workStart, workEnd, meetStart, meetTime) => {
+
+  workStart = Number(workStart.split(':')[0]) * 60 + Number(workStart.split(':')[1]);
+  workEnd = Number(workEnd.split(':')[0]) * 60 + Number(workEnd.split(':')[1]);
+  meetStart = Number(meetStart.split(':')[0]) * 60 + Number(meetStart.split(':')[1]);
+
+  if (meetStart < workStart) {
+    return false;
+  }
+  if (meetStart + meetTime > workEnd) {
+    return false;
+  }
+  return true;
+
+};
+
+
+getTime('08:00', '17:30', '14:00', 90); // true
+getTime('8:0', '10:0', '8:0', 120); // true
+getTime('08:00', '14:30', '14:00', 90); // false
+getTime('14:00', '17:30', '08:0', 90); // false
+getTime('8:00', '17:30', '08:00', 900); // false
