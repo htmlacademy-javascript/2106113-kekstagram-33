@@ -90,8 +90,7 @@ const createPhoto = () =>
     comments: Array.from({length: getRandomInteger(PARAMETERS.commentsMin, PARAMETERS.commentsMax)}, createComment)
   });
 
-const photoObjects = Array.from({length: PARAMETERS.photosCount}, createPhoto);
+const photoObjects = () => Array.from({length: PARAMETERS.photosCount}, createPhoto);
 
-//Ради исключения ошибки линтера//
-const test = () => photoObjects;
-test();
+export {photoObjects};
+
