@@ -1,19 +1,27 @@
-import {photoObjects} from './data.js';
+import { openFull } from './big-pictures';
 
-const template = document.querySelector('#picture').content.querySelector('.picture');
-const usersPicturesList = document.querySelector('.pictures');
-const usersPictures = photoObjects();
+const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
 
 const usersPicturesFragment = document.createDocumentFragment();
 
-usersPictures.forEach(({url, description, likes, comments}) => {
-  const photoElement = template.cloneNode(true);
-  photoElement.querySelector('.picture__img').src = url;
-  photoElement.querySelector('.picture__img').alt = description;
-  photoElement.querySelector('.picture__likes').textContent = likes;
-  photoElement.querySelector('.picture__comments').textContent = comments.length;
-  usersPicturesFragment.appendChild(photoElement);
-});
+const usersPicturesContainer = document.querySelector('.pictures');
 
-usersPicturesList.appendChild(usersPicturesFragment);
+const renderPosts = (objects) => {
+  objects.forEach((object) => {
+    const {url, description, likes, comments} = object;
+    const photoElement = pictureTemplate.cloneNode(true);
+    photoElement.querySelector('.picture__img').src = url;
+    photoElement.querySelector('.picture__img').alt = description;
+    photoElement.querySelector('.picture__likes').textContent = likes;
+    photoElement.querySelector('.picture__comments').textContent = comments.length;
 
+    photoElement.addEventListener('click', (evt) => {
+      evt.preventDefault();
+      openFull(object);
+    });
+    usersPicturesFragment.appendChild(photoElement);
+  });
+  usersPicturesContainer.appendChild(usersPicturesFragment);
+};
+
+export { renderPosts };
