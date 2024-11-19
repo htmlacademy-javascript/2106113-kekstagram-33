@@ -69,20 +69,17 @@ const renderComments = () => {
   commentsList.appendChild(commentsFragment);
 };
 
-/*const onLoadCommentsButton = function () {
+const onLoadCommentsButton = function () {
   commentsCount += COMMENTS_STEP;
   renderComments();
 };
-*/
+
 const openFull = (object) => {
   const {url, likes, description, comments} = object;
 
   bigPictureImg.src = url;
   bigPictureLikes.textContent = likes;
   bigPictureDescription.textContent = description;
-
-  //commentsShowCount.value = commentsShowCount.textContent;
-  //commentsTotal.textContent = comments.length;
 
   currentComments = comments.slice();
 
@@ -109,7 +106,7 @@ function closeFullPhoto() {
   document.addEventListener('keydown', onDocumentKeyEnter);
 }
 
-//commentsLoader.addEventListener('click', onLoadCommentsButton);
+commentsLoader.addEventListener('click', onLoadCommentsButton);
 
 bigPictureClose.addEventListener('click', closeFullPhoto);
 
