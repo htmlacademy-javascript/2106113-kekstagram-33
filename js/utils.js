@@ -9,4 +9,7 @@ function getRandomInteger (min, max) {
 // Получение  случайного индекса массива //
 const getRandomArrayElement = (elements) => elements[getRandomInteger(0, elements.length - 1)];
 
-export {getRandomInteger, getRandomArrayElement};
+const isEscapeKey = (evt) => evt.key === 'Escape';
+const isEnterkey = (evt) => evt.key === 'Enter';
+
+export {getRandomInteger, getRandomArrayElement, isEscapeKey, isEnterkey};
