@@ -1,13 +1,15 @@
 import {isEscapeKey} from'./utils';
 
+import { onEffectChange } from './form-photo-effects';
+const effects = document.querySelector('.effects__list');
+
 const imgUploadForm = document.querySelector('.img-upload__form');
 const imgUploadInput = imgUploadForm.querySelector('.img-upload__input');
 const imgUploadOverlay = imgUploadForm.querySelector('.img-upload__overlay');
-const OverlayCloseButton = imgUploadForm.querySelector('.img-upload__cancel');
+const overlayCloseButton = imgUploadForm.querySelector('.img-upload__cancel');
 
 const uploadFormInputsContainer = imgUploadForm.querySelector('.img-upload__field-wrapper');
 const imgUploadInputs = uploadFormInputsContainer.querySelectorAll('input, textarea');
-
 
 const resetImageInputValue = () => {
   imgUploadInput.value = null;
@@ -34,6 +36,7 @@ function openOverLay(evt) {
   document.querySelector('body').classList.add('modal-open');
 
   document.addEventListener('keydown', onDocumentKeyDown);
+  effects.addEventListener('change', onEffectChange);
 }
 
 function closeOverlay() {
@@ -45,4 +48,4 @@ function closeOverlay() {
 }
 
 imgUploadInput.addEventListener('change', openOverLay);
-OverlayCloseButton.addEventListener('click', closeOverlay);
+overlayCloseButton.addEventListener('click', closeOverlay);
