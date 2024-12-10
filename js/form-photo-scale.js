@@ -3,24 +3,6 @@ const buttonBigger = document.querySelector('.scale__control--bigger');
 const sizeValue = document.querySelector('.scale__control--value');
 const imgUploadPreview = document.querySelector('.img-upload__preview img');
 
-/*
-buttonSmaller.addEventListener('click', () => {
-  let sizeValueNum = parseInt(sizeValue.value, 10);
-  if (sizeValueNum > 25) {
-    sizeValueNum -= 25;
-    sizeValue.value = `${sizeValueNum}%`;
-    imgUploadPreview.style.transform = `scale(${sizeValueNum / 100})`;
-  }
-});
-buttonBigger.addEventListener('click', () => {
-  let sizeValueNum = parseInt(sizeValue.value, 10);
-  if (sizeValueNum < 100) {
-    sizeValueNum += 25;
-    sizeValue.value = `${sizeValueNum}%`;
-    imgUploadPreview.style.transform = `scale(${sizeValueNum / 100})`;
-  }
-});
-*/
 const getSizePhoto = (evt) => {
   let sizeValueNum = parseInt(sizeValue.value, 10);
   if (evt.target.classList.contains('scale__control--smaller') && sizeValueNum > 25) {
