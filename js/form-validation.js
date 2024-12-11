@@ -1,6 +1,8 @@
 import { sendData } from './api';
 import { showModal } from './api-util';
 
+const HASHTAG_PATTERN = /^#[a-zа-яё0-9]{1,19}$/i;
+
 const imgUploadForm = document.querySelector('.img-upload__form');
 const imgUploadComment = document.querySelector('.text__description');
 const imgUploadHashtag = document.querySelector('.text__hashtags');
@@ -31,9 +33,8 @@ function validateComments (value) {
 }
 
 pristine.addValidator(imgUploadHashtag, (value) => {
-  const hashtagPattern = /^#[a-zа-яё0-9]{1,19}$/i;
   const hashtags = value.split(' ').filter((tag) => tag.trim() !== '');
-  return hashtags.every((tag) => hashtagPattern.test(tag));
+  return hashtags.every((tag) => HASHTAG_PATTERN.test(tag));
 }, 'Хэштег должен начинаться с # и содержать только буквы и цифры');
 
 
