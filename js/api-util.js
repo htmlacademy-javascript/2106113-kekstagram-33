@@ -1,4 +1,5 @@
-import {isEscapeKey} from'./utils';
+import { isEscapeKey } from'./utils';
+
 const ALERT_SHOW_TIME = 5000;
 const thumbnailsErrorTemplate = document.querySelector('#data-error').content.querySelector('.data-error');
 const body = document.body;
@@ -38,4 +39,4 @@ const showErrorMessage = () => {
   }, ALERT_SHOW_TIME);
 };
 
-export {showErrorMessage, showModal};
+export { showErrorMessage, showModal };

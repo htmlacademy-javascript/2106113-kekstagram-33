@@ -1,4 +1,4 @@
-import {sendData} from './api';
+import { sendData } from './api';
 import { showModal } from './api-util';
 
 const imgUploadForm = document.querySelector('.img-upload__form');

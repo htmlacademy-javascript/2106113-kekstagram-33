@@ -1,4 +1,6 @@
-import {isEscapeKey} from'./utils';
+import { isEscapeKey } from'./utils';
+import { pristine } from './form-validation';
+import { onEffectChange } from './form-photo-effects';
 
 const imgUploadForm = document.querySelector('.img-upload__form');
 
@@ -7,30 +9,22 @@ const imgUploadHashtag = document.querySelector('.text__hashtags');
 const sizeValue = document.querySelector('.scale__control--value');
 const imgUploadPreview = document.querySelector('.img-upload__preview img');
 const effectLevel = document.querySelector('.img-upload__effect-level');
+const noneEffect = document.querySelector('#effect-none');
 
-import { onEffectChange } from './form-photo-effects';
 const effects = document.querySelector('.effects__list');
 
 const imgUploadInput = imgUploadForm.querySelector('.img-upload__input');
 const imgUploadOverlay = imgUploadForm.querySelector('.img-upload__overlay');
 const overlayCloseButton = imgUploadForm.querySelector('.img-upload__cancel');
 
-const uploadFormInputsContainer = imgUploadForm.querySelector('.img-upload__field-wrapper');
-const imgUploadInputs = uploadFormInputsContainer.querySelectorAll('input, textarea');
-
 const resetImageInputValue = () => {
   imgUploadInput.value = null;
 };
 
 const onDocumentKeyDown = function (evt) {
-  if (isEscapeKey(evt)) {
+  if (isEscapeKey(evt) && !evt.target.classList.contains('text__hashtags')
+    && !evt.target.classList.contains('text__description')) {
     evt.preventDefault();
-    for (const elem of imgUploadInputs) {
-      if (document.activeElement === elem) {
-        evt.stopPropagation();
-        return;
-      }
-    }
     closeOverlay();
   }
 };
@@ -59,6 +53,8 @@ function closeOverlay() {
   imgUploadPreview.style.filter = '';
   effectLevel.classList.add('hidden');
   imgUploadPreview.style.filter = 'none';
+  noneEffect.checked = true;
+  pristine.reset();
 
   document.removeEventListener('keydown', onDocumentKeyDown);
 }
