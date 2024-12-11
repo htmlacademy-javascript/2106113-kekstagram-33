@@ -25,11 +25,11 @@ const onDocumentKeyDown = function (evt) {
   if (isEscapeKey(evt) && !evt.target.classList.contains('text__hashtags')
     && !evt.target.classList.contains('text__description')) {
     evt.preventDefault();
-    closeOverlay();
+    onCloseOverlay();
   }
 };
 
-function openOverLay(evt) {
+function onOpenOverLay(evt) {
 
   evt.preventDefault();
 
@@ -40,7 +40,7 @@ function openOverLay(evt) {
   effects.addEventListener('change', onEffectChange);
 }
 
-function closeOverlay() {
+function onCloseOverlay() {
   imgUploadOverlay.classList.add('hidden');
   document.querySelector('body').classList.remove('modal-open');
   resetImageInputValue();
@@ -59,7 +59,7 @@ function closeOverlay() {
   document.removeEventListener('keydown', onDocumentKeyDown);
 }
 
-imgUploadInput.addEventListener('change', openOverLay);
-overlayCloseButton.addEventListener('click', closeOverlay);
+imgUploadInput.addEventListener('change', onOpenOverLay);
+overlayCloseButton.addEventListener('click', onCloseOverlay);
 
-export { openOverLay, closeOverlay };
+export { onOpenOverLay, onCloseOverlay };
