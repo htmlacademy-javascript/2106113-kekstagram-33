@@ -19,13 +19,13 @@ let currentComments = [];
 const onDocumentKeyEnter = function (evt) {
   if (isEnterkey(evt)) {
     evt.preventDefault();
-    openFullPhoto();
+    onOpenForm();
   }
 };
 const onDocumentKeyDown = function (evt) {
   if (isEscapeKey(evt)) {
     evt.preventDefault();
-    closeFullPhoto();
+    onCloseForm();
   }
 };
 
@@ -74,7 +74,7 @@ const onLoadCommentsButton = function () {
   renderComments();
 };
 
-const openFull = (object) => {
+const openForm = (object) => {
   const {url, likes, description, comments} = object;
 
   bigPictureImg.src = url;
@@ -85,11 +85,11 @@ const openFull = (object) => {
 
   renderComments();
 
-  openFullPhoto();
+  onOpenForm();
 
 };
 
-function openFullPhoto() {
+function onOpenForm() {
   bigPicture.classList.remove('hidden');
   document.querySelector('body').classList.add('modal-open');
 
@@ -97,7 +97,7 @@ function openFullPhoto() {
   document.removeEventListener('keydown', onDocumentKeyEnter);
 }
 
-function closeFullPhoto() {
+function onCloseForm() {
   commentsCount = COMMENTS_STEP;
   bigPicture.classList.add('hidden');
   document.querySelector('body').classList.remove('modal-open');
@@ -108,8 +108,6 @@ function closeFullPhoto() {
 
 commentsLoader.addEventListener('click', onLoadCommentsButton);
 
-bigPictureClose.addEventListener('click', closeFullPhoto);
+bigPictureClose.addEventListener('click', onCloseForm);
 
-export { openFull };
-
-
+export { openForm };

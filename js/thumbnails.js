@@ -1,4 +1,4 @@
-import { openFull } from './big-pictures';
+import { openForm } from './big-pictures';
 
 const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
 const usersPicturesFragment = document.createDocumentFragment();
@@ -15,7 +15,7 @@ const renderPosts = (objects) => {
 
     photoElement.addEventListener('click', (evt) => {
       evt.preventDefault();
-      openFull(object);
+      openForm(object);
     });
     usersPicturesFragment.appendChild(photoElement);
   });
