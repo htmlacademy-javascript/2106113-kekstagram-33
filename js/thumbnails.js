@@ -1,9 +1,7 @@
 import { openFull } from './big-pictures';
 
 const pictureTemplate = document.querySelector('#picture').content.querySelector('.picture');
-
 const usersPicturesFragment = document.createDocumentFragment();
-
 const usersPicturesContainer = document.querySelector('.pictures');
 
 const renderPosts = (objects) => {
