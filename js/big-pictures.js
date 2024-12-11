@@ -1,4 +1,4 @@
-import {isEscapeKey, isEnterkey} from'./utils';
+import { isEscapeKey, isEnterkey } from'./utils';
 
 const COMMENTS_STEP = 5;
 
@@ -60,7 +60,7 @@ const renderComments = () => {
   } else {
     commentsLoader.classList.remove('hidden');
   }
-  //commentsListCount.innerHTML = `${commentsCount} из ${currentComments.length} комментариев`;
+
   commentsShowCount.textContent = commentsCount;
   commentsTotal.textContent = currentComments.length;
 
